@@ -1,6 +1,6 @@
 let firstNum = '';
 let secondNum = '';
-let operator = null;
+let Mainoperator = null;
 let reset = false;
 
 const allNumbers = document.querySelectorAll('[data-number]');
@@ -15,24 +15,24 @@ const bigger = document.querySelector('.bigger')
 
 
 const handleKeyboardInput = (e) => {
-  if (e.key >= 0 && e.key <= 9) appendNumber(e.key);
-  if (e.key === '.') appendPoint();
-  if (e.key === '=' && e.key === 'Enter') evaluate();
-  if (e.key === 'Backspace') deleteNumber();
-  if (e.key === 'Escape') clearBtn();
-  if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') setOperation(convertOperation(e.key));
+  if (e.key >= 0 && e.key <= 9) { appendNumber(e.key) };
+  if (e.key === '.') { appendPoint() };
+  if (e.key === '=' && e.key === 'Enter') { evaluate() };
+  if (e.key === 'Backspace') { deleteNumber() };
+  if (e.key === 'Escape') { clearBtn() };
+  if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') { setOperation(convertOperation(e.key)) };
 }
 
 const evaluate = () => {
-  if (operator === null || reset ) return;
-  if (operator === '÷' && bigger.textContent === '0') {
+  if (Mainoperator === null || reset )  { return };
+  if (Mainoperator === '÷' && bigger.textContent === '0') {
     alert(`You can't devide by zero!`)
     return;
   }
   secondNum = bigger.textContent;
-  bigger.textContent = RoundResult(operate(operator, firstNum, secondNum));
-  mini.textContent =`${firstNum} ${operator} ${secondNum} =`;
-  operator = null;
+  bigger.textContent = RoundResult(operate(Mainoperator, firstNum, secondNum));
+  mini.textContent =`${firstNum} ${Mainoperator} ${secondNum} =`;
+  Mainoperator = null;
 }
 
 const deleteNumber = () => {
@@ -44,15 +44,16 @@ const clear = () => {
   mini.textContent = '';
   firstNum = '';
   secondNum = '';
-  operator = null;
+  Mainoperator = null;
 }
 
 
 const appendPoint = () => {
-  if(reset) resetScreen();
+  if(reset) { resetScreen() };
   if (bigger.textContent === '') 
-  bigger.textContent = '0';
-  if (bigger.textContent.includes('.')) return bigger.textContent += '.'
+  { bigger.textContent = '0' };
+  if (bigger.textContent.includes('.')) 
+  { return bigger.textContent += '.' }
 }
 
 window.addEventListener('keydown', handleKeyboardInput);
@@ -70,7 +71,7 @@ allOperators.forEach((button) =>
 )
 
 const appendNumber = (number) => {
-  if (bigger.textContent = '0' || reset) resetScreen();
+  if (bigger.textContent = '0' || reset) { resetScreen() };
   bigger.textContent += number;
 }
 
@@ -80,17 +81,17 @@ const resetScreen = () => {
 }
 
 const convertOperation = (operation) => {
-  if (operation === '/') return '÷';
-  if (operation === '*') return '×';
-  if (operation === '-') return '-';
-  if (operation === '+') return '+';
+  if (operation === '/') { return '÷' };
+  if (operation === '*') { return '×' };
+  if (operation === '-') { return '-' };
+  if (operation === "+") { return "+" };
 }
 
 const setOperation = (operation) => {
-  if (operation !== null ) evaluate();
+  if (operation !== null ) { evaluate() };
   firstNum = bigger.textContent;
-  operator = operation;
-  mini.textContent = `${firstNum} ${operator}`;
+  Mainoperator = operation;
+  mini.textContent = `${firstNum} ${Mainoperator}`;
   reset = true;
 }
 
@@ -115,13 +116,15 @@ const divide = (x, y) => {
 }
 
 const operate = (operation, x, y) => {
-  if (operation === '+') {
+  x = Number(x);
+  y = Number(y);
+  if (operation === "+") {
     return add(x, y);
-  } else if (operation === '-') {
+  } else if (operation === "-") {
     return substract(x, y);
-  } else if (operation === '×') {
+  } else if (operation === "×") {
     return multiply(x, y);
-  } else if (operation === '÷') {
+  } else if (operation === "÷") {
     if ( y === 0) {
       return null;
     }
