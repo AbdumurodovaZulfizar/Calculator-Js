@@ -18,20 +18,20 @@ const handleKeyboardInput = (e) => {
   if (e.key === '.') { appendPoint() };
   if (e.key === '=' && e.key === 'Enter') { evaluate() };
   if (e.key === 'Backspace') { deleteNumber() };
-  if (e.key === 'Escape') { clearBtn() };
+  if (e.key === 'Escape') { clear() };
   if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') { setOperation(convertOperation(e.key)) };
 }
 
 const evaluate = () => {
-  if (Mainoperator === null || reset )  { return };
-  if (Mainoperator === '÷' && bigger.textContent === '0') {
+  if (MainOperator === null || reset )  { return };
+  if (MainOperator === '÷' && bigger.textContent === '0') {
     alert(`You can't devide by zero!`)
     return;
   }
   secondNum = bigger.textContent;
-  bigger.textContent = RoundResult(operate(Mainoperator, firstNum, secondNum));
-  mini.textContent =`${firstNum} ${Mainoperator} ${secondNum} =`;
-  Mainoperator = null;
+  bigger.textContent = RoundResult(operate(MainOperator, firstNum, secondNum));
+  mini.textContent =`${firstNum} ${MainOperator} ${secondNum} =`;
+  MainOperator = null;
 }
 
 const deleteNumber = () => {
@@ -43,7 +43,7 @@ const clear = () => {
   mini.textContent = '';
   firstNum = '';
   secondNum = '';
-  Mainoperator = null;
+  MainOperator = null;
 }
 
 
@@ -52,14 +52,14 @@ const appendPoint = () => {
   if (bigger.textContent === '') 
   { bigger.textContent = '0' };
   if (bigger.textContent.includes('.')) 
-  { return bigger.textContent += '.' }
+  return bigger.textContent += '.' 
 }
 
 window.addEventListener('keydown', handleKeyboardInput);
 equalsBtn.addEventListener('click', evaluate);
-clearBtn.addEventListener('click', deleteNumber);
-resetBtn.addEventListener('click', clear);
-poinBtn.addEventListener('click', appendPoint);
+clearBtn.addEventListener('click', clear);
+deleteBtn.addEventListener('click', deleteNumber);
+pointBtn.addEventListener('click', appendPoint);
 
 allNumbers.forEach((button) =>
   button.addEventListener('click', () => appendNumber(button.textContent))
@@ -70,12 +70,12 @@ allOperators.forEach((button) =>
 )
 
 const appendNumber = (number) => {
-  if (bigger.textContent = '0' || reset) { resetScreen() };
+  if (bigger.textContent === '0' || reset) { resetScreen() };
   bigger.textContent += number;
 }
 
 const resetScreen = () => {
-  bigger.textContent = '';
+  bigger.textContent = "";
   reset = false;
 }
 
@@ -87,10 +87,10 @@ const convertOperation = (operation) => {
 }
 
 const setOperation = (operation) => {
-  if (Mainoperator !== null ) { evaluate() };
+  if (MainOperator !== null ) { evaluate() };
   firstNum = bigger.textContent;
-  Mainoperator = operation;
-  mini.textContent = `${firstNum} ${Mainoperator}`;
+  MainOperator = operation;
+  mini.textContent = `${firstNum} ${MainOperator}`;
   reset = true;
 }
 
