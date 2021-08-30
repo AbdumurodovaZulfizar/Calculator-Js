@@ -81,14 +81,14 @@ const resetScreen = () => {
 }
 
 const convertOperation = (operation) => {
-  if (operation === '/') { return '÷' };
-  if (operation === '*') { return '×' };
-  if (operation === '-') { return '-' };
+  if (operation === "/") { return "÷" };
+  if (operation === "*") { return "×" };
+  if (operation === "-") { return "-" };
   if (operation === "+") { return "+" };
 }
 
 const setOperation = (operation) => {
-  if (operation !== null ) { evaluate() };
+  if (Mainoperator !== null ) { evaluate() };
   firstNum = bigger.textContent;
   Mainoperator = operation;
   mini.textContent = `${firstNum} ${Mainoperator}`;
