@@ -1,15 +1,14 @@
 let firstNum = '';
 let secondNum = '';
-let Mainoperator = null;
+let MainOperator = null;
 let reset = false;
 
 const allNumbers = document.querySelectorAll('[data-number]');
 const allOperators = document.querySelectorAll('[data-operator]');
 const equalsBtn = document.getElementById('equalBtn');
-const resetBtn = document.getElementById('resetBtn');
 const clearBtn = document.getElementById('clearBtn');
-const poinBtn = document.getElementById('pointBtn');
-
+const deleteBtn = document.getElementById('deleteBtn');
+const pointBtn = document.getElementById('pointBtn');
 const mini = document.querySelector('.mini');
 const bigger = document.querySelector('.bigger')
 
