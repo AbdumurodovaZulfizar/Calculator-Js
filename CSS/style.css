@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+.font {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+body {
+  background-image: url(https://us.123rf.com/450wm/lisala/lisala1607/lisala160700101/60142046-abstract-background-with-transparent-group-of-numbers.jpg?ver=6jpg);
+  background-repeat: no-repeat;
+  /* background-position: center; */
+  background-size: cover;
+  overflow-x: hidden;
+}
+
+.calc {
+  height: 100px;
+}
+
+.bg-grey {
+  background-color: #eee;
+}
+
+.mini {
+  height: 40px;
+}
+
+.bigger {
+  height: 60px;
+  font-size: 40px;
+  float: right;
+}
